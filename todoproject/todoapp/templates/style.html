@@ -1,0 +1,35 @@
+{% load static %}
+<style>
+    body {
+    background: #141414 url("{% static 'img/pic_for_author.jpg' %}") repeat-y; /* Фоновый цвет и фоновый рисунок*/
+    background-repeat: repeat-y, repeat-y;
+    background-position: left, right;
+    background-attachment: fixed, fixed;
+    text-align: left; /* Выравнивание блока по центру */
+    color: #fff; /*Цвет текста на странице*/
+    }
+    A {
+        color: #030303; /* Цвет ссылок */
+    }
+    A:visited {
+        color: #ee07b4; /* Цвет посещенных ссылок */
+    }
+    A:active {
+        color: #7B68EE; /* Цвет активных ссылок */
+    }
+    #container {
+    width: 900px; /* Ширина макета */
+    margin: 0 auto; /* Выравнивание по центру */
+    }
+    #nav {
+    width: 300px; /* Ширина левой колонки */
+    float: left;
+    }
+    #aside {
+    width: 300px; /* Ширина правой колонки */
+    float: right;
+    }
+    #content {
+    margin: 0 300px 0 300px; /* Отступ на ширину левой и правой колонки*/
+    }
+</style>

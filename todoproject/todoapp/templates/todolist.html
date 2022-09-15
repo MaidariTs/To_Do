@@ -8,60 +8,32 @@
     <title>To Do List</title>
 </head>
 <body>
-    <style>
-      body {
-      background: #141414 url("{% static 'img/pic_for_author.jpg' %}") repeat-y; /* Фоновый цвет и фоновый рисунок*/
-      background-repeat: repeat-y, repeat-y;
-      background-position: left, right;
-      background-attachment: fixed, fixed;
-      text-align: left; /* Выравнивание блока по центру */
-      color: #fff; /*Цвет текста на странице*/
-      }
-      A {
-        color: #030303; /* Цвет ссылок */
-      }
-      A:visited {
-        color: #ee07b4; /* Цвет посещенных ссылок */
-      }
-      A:active {
-        color: #7B68EE; /* Цвет активных ссылок */
-      }
-      #container {
-      width: 900px; /* Ширина макета */
-      margin: 0 auto; /* Выравнивание по центру */
-      }
-      #nav {
-      width: 300px; /* Ширина левой колонки */
-      float: left;
-      }
-      #aside {
-      width: 300px; /* Ширина правой колонки */
-      float: right;
-      }
-      #content {
-      margin: 0 300px 0 300px; /* Отступ на ширину левой и правой колонки*/
-      }
-    </style>
-    <div id="container">
-      <div id="nav"> <!--Левая колонка--> </div>
-      <div id="aside"> <!--Правая колонка--> </div>
-      <div id="content"> <!--Центральная колонка-->
-        <h1>My To Do List</h1>
-        <form action="/addToDoItem/" method = "post">{% csrf_token %}
-          <input type="text" name="content">
-          <input type="submit" value="Add Todo Item">
-        </form>
-        <ul>
-            {% for i in all_items %} 
-            <li>
-              {{i.content}}
-              <form action="/deleteToDoItem/{{i.id}}/" method = "post">{% csrf_token %}
-                <input type="submit" value="Delete">
-              </form>
-            </li>
-            {% endfor %}
-        </ul>
-      </div>
+  {% include 'style.html' %}
+  <div id="container">
+    <div id="nav"> <!--Левая колонка-->
+      <p></p>
+      {% include 'current_date_time_block.html' %}
     </div>
+    <div id="aside"> <!--Правая колонка-->
+    </div>
+    <div id="content" > <!--Центральная колонка-->
+      <h1>My To Do List</h1>
+      <form action="/addToDoItem/" method = "post">{% csrf_token %}
+        <input type="text" name="content">
+        <input type="submit" value="Add Todo Item">
+      </form>
+      <ul>
+          {% for i in all_items %} 
+          <li>
+            {{i.content}}
+            <form action="/deleteToDoItem/{{i.id}}/" method = "post">{% csrf_token %}
+              <input type="submit" value="Delete">
+              <p></p>
+            </form>
+          </li>
+          {% endfor %}
+      </ul>
+    </div>
+  </div>
 </body>
 </html>
